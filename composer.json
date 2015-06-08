@@ -1,6 +1,7 @@
 {
     "name": "owlycode/thematic-speech",
-    "licence": "MIT",
+    "description": "An experimental library that can be used to determine actions to issue from natural language",
+    "license": "MIT",
     "authors": [
         {
             "name": "OwlyCode",
