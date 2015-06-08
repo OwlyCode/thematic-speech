@@ -1,0 +1,15 @@
+{
+    "name": "owlycode/thematic-speech",
+    "authors": [
+        {
+            "name": "OwlyCode",
+            "email": "tmaindron@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "OwlyCode\\ThematicSpeech\\": "."
+        }
+    }
+}
