@@ -8,15 +8,23 @@ class Route
 
     private $callable;
 
-    public function __construct(array $thematicNames, callable $callable)
+    private $patterns;
+
+    public function __construct(array $thematicNames, callable $callable, array $patterns = array())
     {
         $this->thematicNames = $thematicNames;
         $this->callable      = $callable;
+        $this->patterns      = $patterns;
     }
 
     public function getCallable()
     {
         return $this->callable;
+    }
+
+    public function getArgumentPatterns()
+    {
+        return $this->patterns;
     }
 
     public function matches(array $thematics)

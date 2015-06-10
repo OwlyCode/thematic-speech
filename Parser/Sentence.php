@@ -15,4 +15,9 @@ class Sentence
     {
         return $this->words;
     }
+
+    public function __toString()
+    {
+        return implode(' ', $this->words);
+    }
 }

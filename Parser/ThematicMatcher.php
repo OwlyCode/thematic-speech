@@ -2,7 +2,7 @@
 
 namespace OwlyCode\ThematicSpeech\Parser;
 
-class Matcher
+class ThematicMatcher
 {
     private $thematics;
 
