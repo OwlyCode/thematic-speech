@@ -4,15 +4,22 @@ namespace OwlyCode\ThematicSpeech\Parser;
 
 class ArgumentMatcher
 {
+    /**
+     * @param array    $patterns
+     * @param Sentence $sentence
+     *
+     * @return ArgumentCollection
+     */
     public function getArguments(array $patterns, Sentence $sentence)
     {
-        $arguments = array();
+        $arguments = [];
         $words = (string)$sentence;
+        $collection = new ArgumentCollection();
 
         foreach ($patterns as $pattern) {
-            $arguments = array_merge($arguments, $pattern->getMatchedArguments($words));
+            $collection->addMany($pattern->getMatchedArguments($words));
         }
 
-        return $arguments;
+        return $collection;
     }
 }

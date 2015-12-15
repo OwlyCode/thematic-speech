@@ -4,6 +4,9 @@ namespace OwlyCode\ThematicSpeech\Parser;
 
 class ThematicMatcher
 {
+    /**
+     * @var Thematic[]
+     */
     private $thematics;
 
     public function __construct(array $thematics)
@@ -11,9 +14,14 @@ class ThematicMatcher
         $this->thematics = $thematics;
     }
 
+    /**
+     * @param Sentence $sentence
+     *
+     * @return string[]
+     */
     public function detect(Sentence $sentence)
     {
-        $thematics = array();
+        $thematics = [];
 
         foreach ($sentence->getWords() as $word) {
             if ($thematic = $this->detectWord($word)) {
@@ -24,6 +32,11 @@ class ThematicMatcher
         return $thematics;
     }
 
+    /**
+     * @param string $word
+     *
+     * @return string|null
+     */
     private function detectWord($word)
     {
         foreach ($this->thematics as $thematic) {

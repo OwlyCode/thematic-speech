@@ -11,8 +11,14 @@ use OwlyCode\ThematicSpeech\Router\Router;
 
 class ThematicSpeech
 {
+    /**
+     * @var Thematic[]
+     */
     private $thematics;
 
+    /**
+     * @var Router
+     */
     private $router;
 
     public function __construct()
@@ -20,9 +26,14 @@ class ThematicSpeech
         $this->router = new Router();
     }
 
+    /**
+     * @param mixed $thematics
+     *
+     * @return ThematicSpeech
+     */
     public function registerThematics(array $thematics)
     {
-        $this->thematics = array();
+        $this->thematics = [];
 
         foreach ($thematics as $name => $value) {
             if ($value instanceof Thematic) {
@@ -31,13 +42,27 @@ class ThematicSpeech
                 $this->thematics[] = new Thematic($name, $value);
             }
         }
+
+        return $this;
     }
 
+    /**
+     * @param array    $thematics
+     * @param array    $patterns
+     * @param callable $action
+     *
+     * @return ThematicSpeech
+     */
     public function register(array $thematics, array $patterns, callable $action)
     {
         $this->router->register(new Route($thematics, $action, $patterns));
+
+        return $this;
     }
 
+    /**
+     * @param string $string
+     */
     public function process($string)
     {
         $matcher    = new ThematicMatcher($this->thematics);
